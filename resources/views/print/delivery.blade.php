@@ -6,7 +6,8 @@ use App\Models\Delivery;
 $c = Delivery::find($_GET['id']);
 
 //$logo_link = public_path('/storage/' . $c->photo);
-$logo_link = public_path('/logo-1.jpg' . $c->photo);
+$logo_link = public_path('/logo-1.jpg');
+$sign = public_path('/sign.jpg');
 ?>
 
 <!DOCTYPE html>
@@ -86,16 +87,17 @@ $logo_link = public_path('/logo-1.jpg' . $c->photo);
 
                 <td style="width: 25%;" class="">
                     <b style="font-size: 25px;">Delivery Note</b>
-
+                    <p class="mt-2">NO. <b style="color: red;"><i>0000{{ $c->id }}</i></b></p> 
                 </td>
             </tr>
             <tr>
-                <td style="width: 15%;" class="">
+                <td style="width: 35%;" class="">
+                    <p>Dealers in Dental materials and equipment and general medical supplies.</p>
+
+                    <br>
                     <p>P.O.Box <b><i>36580, Kampala</i></b></p>
                     <p>Tel: <b><i>+256 772-544 263,<br>+256 702-544 263</i></b></p>
-                </td>
-
-
+                </td>                
             </tr>
         </tbody>
     </table>
@@ -104,7 +106,11 @@ $logo_link = public_path('/logo-1.jpg' . $c->photo);
     <hr style="background-color: rgb(255, 255, 255); height: 3px;" class="p-0 m-0 mt-0">
     <hr style="background-color: rgb(26, 9, 94); height: 3px;" class="p-0 m-0 mt-0 mb-4">
 
-    <b>QUOTATION TO</b>
+
+    <p class="text-right">DATE: {{ Utils::my_date($c->invoice_date) }}</p><br> 
+    
+
+    <b>DELIVERED TO</b>
     <p>{{ $c->customer_name }},</p>
     <p>{{ $c->customer_address }},</p>
     <p>{{ $c->customer_contact }}.</p>
@@ -156,14 +162,28 @@ $logo_link = public_path('/logo-1.jpg' . $c->photo);
     </table>
     {{--     <p class="text-center p-0 m-0"><i>Accounts are due on demand</i></p> --}}
     <br>
-    {{--     <p class=""><b>IN WORDS:</b> {{ Utils::convert_number_to_words($tot) }}.</p> --}}
+    {{--     <p class=""><b>AMOUNT IN WORDS:</b> {{ Utils::convert_number_to_words($tot) }}.</p> --}}
 
     {{-- 
     <p class="text-right"><b>{{ Utils::my_date(time()) }}</b></p> --}}
 
-   <!-- <p class=""><b>SIGNATURE:</b></p>
-    <p class="mt-2">................................................................</p>!-->
 
+    <table>
+        <tr>
+            <td>
+                <p class=""><b>DELIVERED BY:</b></p>
+                <img class="img-fluid w-25" src="{{ $sign }}"> 
+                <p class=""><i>For Sen Logistics and Medical Supplies td</i></p>
+                <BR>
+            </td>
+            <td>
+                <p class=""><b>RECEIVED BY:</b></p>
+                <p class="mt-2">................................................................</p>
+            </td>
+        </tr>
+    </table>
+
+     
 
 </body>
 

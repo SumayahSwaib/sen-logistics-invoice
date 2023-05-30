@@ -5,7 +5,8 @@ use App\Models\Invoice;
 
 $c = Invoice::find($_GET['id']);
 //$logo_link = public_path('/storage/' . $c->photo);
-$logo_link = public_path('/logo-1.jpg' . $c->photo);
+$logo_link = public_path('/logo-1.jpg' );
+$sign = public_path('/sign.jpg');
 ?>
 
 <!DOCTYPE html>
@@ -85,27 +86,26 @@ $logo_link = public_path('/logo-1.jpg' . $c->photo);
 
                 <td style="width: 15%;" class="">
                     <b style="font-size: 35px;">INVOICE</b>
-
+                    <p>NO. <b style="color: red;"><i>0000{{ $c->id }}</i></b></p>
                 </td>
             </tr>
             <tr>
-                <td style="width: 15%;" class="">
+                <td style="width: 35%;" class="">
+                    <p>Dealers in Dental materials and equipment and general medical supplies.</p>
+ 
+                    <br>
                     <p>P.O.Box <b><i>36580, Kampala</i></b></p>
                     <p>Tel: <b><i>+256 772-544 263,<br>+256 702-544 263</i></b></p>
-                </td>
-                <td class=" text-center">
-
-                </td>
-                <td style="width: 15%;">
-                    <p>INOVICE NO. <b style="color: red;"><i>0000{{ $c->id }}</i></b></p>
-                </td>
-            </tr>
+                </td>                
+            </tr> 
         </tbody>
     </table>
 
     <hr style="background-color: rgb(31, 94, 9); height: 3px;" class="p-0 m-0 mt-4">
     <hr style="background-color: rgb(255, 255, 255); height: 3px;" class="p-0 m-0 mt-0">
     <hr style="background-color: rgb(26, 9, 94); height: 3px;" class="p-0 m-0 mt-0 mb-4">
+
+    <p class="text-right">DATE: {{ Utils::my_date($c->invoice_date) }}</p><br>
 
     <b>BILL TO</b>
     <p>{{ $c->customer_name }},</p>
@@ -119,8 +119,8 @@ $logo_link = public_path('/logo-1.jpg' . $c->photo);
                 <th style="width: 5%;">S/n</th>
                 <th>PARTICULARS</th>
                 <th style="width: 8%;">QTY</th>
-                <th style="width: 15%;">PRICE</th>
-                <th style="width: 20%;">TOTAL</th>
+                <th style="width: 15%;">RATE</th>
+                <th style="width: 20%;">AMOUNT</th>
             </tr>
         </thead>
 
@@ -161,10 +161,13 @@ $logo_link = public_path('/logo-1.jpg' . $c->photo);
     </table>
     <p class="text-center p-0 m-0"><i>Accounts are due on demand</i></p>
     <br>
-    <p class=""><b>IN WORDS:</b> {{ Utils::convert_number_to_words($tot) }}.</p>
-   <!-- <p class=""><b>SIGNATURE:</b></p>
-    <p class="mt-2">................................................................</p>-->
+    <p class=""><b>AMOUNT IN WORDS:</b> {{ Utils::convert_number_to_words($tot) }}.</p>
 
+    <hr>
+
+    <img class="img-fluid w-25" src="{{ $sign }}">  
+    <p class=""><i>For Sen Logistics and Medical Supplies td</i></p>
+ 
  
 
     {{-- 
