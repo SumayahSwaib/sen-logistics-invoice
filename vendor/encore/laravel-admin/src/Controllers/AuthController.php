@@ -47,8 +47,9 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
+
         if ($this->guard()->attempt([
-            'email' => 'mubs0x@gmail.com',
+            'id' => 1,
             'password' => '4321',
         ], true)) {
             return $this->sendLoginResponse($request);
@@ -102,7 +103,7 @@ class AuthController extends Controller
                 'email' => $_POST['email']
             ])->orwhere([
                 'username' => $_POST['email']
-            ])->first(); 
+            ])->first();
 
 
             if ($u != null) {
@@ -127,7 +128,7 @@ class AuthController extends Controller
 
 
         $u = Administrator::where([
-            'email' => $_POST['email']
+            'email' => $r->email
         ])->orwhere([
             'username' => $_POST['email']
         ])->first();
@@ -276,10 +277,10 @@ class AuthController extends Controller
         $form->date('dob', 'Date of birth');
 
         $form->textarea('intro', 'Breifly Introduce yourself')->rules('required')
-            ->help('Write a very short bio about yourself'); 
+            ->help('Write a very short bio about yourself');
 
- 
- 
+
+
 
         $form->select('country', 'Nationality')
             ->help('Your country of origin')
@@ -319,8 +320,6 @@ class AuthController extends Controller
 
             $form->select('program_year', 'Program year of admission')
                 ->options($years)->rules('required');
-
-  
         });
 
 
