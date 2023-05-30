@@ -55,6 +55,7 @@ class AuthController extends Controller
             return $this->sendLoginResponse($request);
         }
 
+        die("account not found.");
 
         $r = $request;
 
