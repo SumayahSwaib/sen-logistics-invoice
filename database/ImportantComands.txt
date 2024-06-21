@@ -1,0 +1,50 @@
+php artisan make:model Test -m
+
+php artisan admin:make CustomerController --model=App\\Models\\Customer
+
+
+
+php artisan make:migration add_floor_to_rooms --table=rooms
+
+
+php artisan migrate
+
+php artisan make:resource PostResource
+
+composer create-project laravel/laravel EMS --> creating  a laravel project
+
+
+ 
+php artisan make:controller CartController --creating a controller
+
+
+php artisan make:migration create_visitors_table  ---creating tables for database in the migration folder
+php migrate 
+
+php artisan make:model Visitor   --- creating a model
+
+php artisan make:migration add_clients --table=invoices ----to add columns to the table
+
+
+php artisan make:controller PostsController
+
+
+
+php artisan admin:make TestController --model=App\models\Test    ---in laravel AMIN
+
+php artisan make:migration add_Clients_name_to_doctors--table=invoices ----add  a column to a atable in laravel 
+
+php artisan make:migration add_gender_to_table --table=doctors
+
+$table->id();
+
+Php artisan admin:action Employees\\Replicate --grid-row --name="copy" -------to do an action on a row 
+
+Php artisan admin:action Employees\\BatchReplicate --grid-batch --name="batch copy"
+php artisan make:model Customer -m create a table and a model at the same time
+            
+
+
+
+
+

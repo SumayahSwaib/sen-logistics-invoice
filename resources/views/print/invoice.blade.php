@@ -2,8 +2,10 @@
 $link = public_path('css/bootstrap-print.css');
 use App\Models\Utils;
 use App\Models\Invoice;
+use App\Models\Customer;
 
 $c = Invoice::find($_GET['id']);
+$customer = Customer::find($c->customer_id);
 //$logo_link = public_path('/storage/' . $c->photo);
 $logo_link = public_path('/logo-1.jpg' );
 $sign = public_path('/sign.jpg');
@@ -108,6 +110,7 @@ $sign = public_path('/sign.jpg');
     <p class="text-right">DATE: {{ Utils::my_date($c->invoice_date) }}</p><br>
 
     <b>BILL TO</b>
+   
     <p>{{ $c->customer_name }},</p>
     <p>{{ $c->customer_address }},</p>
     <p>{{ $c->customer_contact }}.</p>

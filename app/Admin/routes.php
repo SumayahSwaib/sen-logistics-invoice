@@ -61,4 +61,12 @@ Route::group([
     $router->resource('event-bookings', EventBookingController::class);
     $router->resource('products', ProductController::class);
     $router->resource('product-orders', ProductOrderController::class);
+    $router->resource('customers', CustomerController::class);
+    $router->resource('customer-statements', CustomerStatementController::class);
+    $router->resource('customer-payments', CustomerPaymentController::class);
+    $router->resource('tests', TestController::class);
+
+
+
 });
+    
